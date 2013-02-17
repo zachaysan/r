@@ -9,6 +9,7 @@
 #include <sstream>
 
 // import other classes
+#include "Timer/timer.cpp"
 
 // set constants
 
