@@ -11,14 +11,16 @@
 // import other classes
 
 // Timer()
-#include "Timer/timer.cpp"
+#include "Logger/logger.h"
+// keyboard_input()
+#include "Timer/timer.h"
 // log()
-#include "Logger/logger.cpp"
-
+#include "Input/keyboard.h"
 // set constants
 
 // set globals
 Timer timer;
+SDL_Event event;
 
 // init
 int init(){
@@ -34,7 +36,18 @@ int main( int argc, char* args[] ){
   log(timer.get_ticks());
   SDL_Delay( 2 );
   log(timer.get_ticks());
-  log("Program exitted successfully");
+  bool quit = false;
+  while( not quit ){
+    while( SDL_PollEvent( &event ) ){
+      if( event.type == SDL_QUIT ){
+	quit = true;
+      }
+      if( event.type == SDL_KEYDOWN ){ 
+	quit = quit or keyboard_input( &event.key );
+      }
+    }
+  }
+  log("Program ended successfully");
   return 0;
 }
 // clean up
