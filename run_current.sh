@@ -1,1 +1,1 @@
-./main
+. compile.sh && ./main

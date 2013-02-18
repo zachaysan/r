@@ -17,15 +17,31 @@
 // log()
 #include "Input/keyboard.h"
 // set constants
+const int SCREEN_WIDTH = 840;
+const int SCREEN_HEIGHT = 680;
+const int SCREEN_BPP = 32;
+const int FRAMES_PER_SECOND = 1000;
 
 // set globals
 Timer timer;
 SDL_Event event;
+SDL_Surface *screen = NULL;
 
 // init
 int init(){
   timer = Timer();
   timer.start();
+  if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 ){
+    return 1;
+  }
+  screen = SDL_SetVideoMode( SCREEN_WIDTH,
+			     SCREEN_HEIGHT,
+			     SCREEN_BPP,
+			     SDL_SWSURFACE );
+
+  if( screen == NULL ){
+    return 2;
+  }
 }
 
 // load files (maybe in linked files)
@@ -43,7 +59,7 @@ int main( int argc, char* args[] ){
 	quit = true;
       }
       if( event.type == SDL_KEYDOWN ){ 
-	quit = quit or keyboard_input( &event.key );
+	quit = quit or not keyboard_input( &event.key );
       }
     }
   }

@@ -5,13 +5,19 @@
 #include <string>
 #include <sstream>
 
+// contains definitions for ints
+#include "keyboard.h"
+
 int keyboard_input( SDL_KeyboardEvent *key ){
-  return 0;
-  if( key->keysym.mod & KMOD_CTRL ){
-    std::cerr << "lko";
-  } else {
-    std::cerr << "kiiiill";
+  bool ctrl = (key->keysym.mod & KMOD_CTRL);
+  if( ctrl and key->keysym.sym == SDLK_w ){
+    return QUIT_SIGNAL;
   }
-  std::cerr << ":D";
-  return 0;
+  if( key->keysym.sym == SDLK_RETURN ){
+    ACCEPT_ACTION;
+  }
+  if( key->keysym.sym == SDLK_F11 ){
+    return MAX_SCREEN;
+  }
+  return NO_ACTION;
 }
