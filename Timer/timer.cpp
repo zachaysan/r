@@ -40,12 +40,10 @@ void Timer::stop(){
 }
 
 int Timer::get_ticks(){
-  if( started ){
-    if( paused ){
-      return paused_ticks;
-    } else {
-      return SDL_GetTicks() - start_ticks;
-    }
+  if( started and paused ){
+    return paused_ticks;
+  } else if( started ) {
+    return SDL_GetTicks() - start_ticks;
   } else {
     return 0;
   }
