@@ -13,8 +13,11 @@ int keyboard_input( SDL_KeyboardEvent *key ){
   if( ctrl and key->keysym.sym == SDLK_w ){
     return QUIT_SIGNAL;
   }
+  if( ctrl and key->keysym.sym == SDLK_c ){
+    return QUIT_SIGNAL;
+  }
   if( key->keysym.sym == SDLK_RETURN ){
-    ACCEPT_ACTION;
+    return ACCEPT_ACTION;
   }
   if( key->keysym.sym == SDLK_F11 ){
     return MAX_SCREEN;

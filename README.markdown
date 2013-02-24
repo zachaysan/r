@@ -12,8 +12,7 @@ Timer/timer.cpp - the local game wide clock
 
 NEEDED
 
-Drawer/drawer.cpp - tells units to blit to the primary surface, uses a DAG to
-		    determin when/if each unit should blit.
+Drawer/drawer.cpp - tells units to blit to the primary surface
 Allocator/allocator.cpp - determines the flow of resources throughout the game,
 			  uses a DAG (or possibly a DG) to determine the order of 
 			  resource movement.

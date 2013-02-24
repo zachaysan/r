@@ -1,7 +1,9 @@
 #!/bin/bash
 
-g++ -c Logger/logger.cpp &&
-g++ -c Timer/timer.cpp &&
-g++ -c Input/keyboard.cpp &&
-g++ -c main.cpp &&
-g++ main.o keyboard.o timer.o logger.o -o main -lSDL -lSDL_image -lSDL_ttf
+g++ Logger/logger.cpp -c -Wall &&
+g++ Timer/timer.cpp -c -Wall &&
+g++ Input/keyboard.cpp -c -Wall &&
+g++ Input/mouse.cpp -c -Wall &&
+g++ Drawer/drawer.cpp -c -Wall &&
+g++ main.cpp -c -Wall &&
+g++ main.o logger.o timer.o keyboard.o mouse.o drawer.o -o main -lSDL -lSDL_image -lSDL_ttf -Wall
