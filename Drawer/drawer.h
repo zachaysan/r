@@ -1,3 +1,6 @@
+#ifndef DRAWER_H
+#define DRAWER_H
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include <string>
@@ -17,3 +20,5 @@ public:
   SDL_Surface* main_tile;  
   SDL_Surface* building_tile;
 };
+
+#endif

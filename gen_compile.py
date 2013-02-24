@@ -4,7 +4,8 @@ files = ["Logger/logger.cpp",
          "Timer/timer.cpp",
          "Input/keyboard.cpp",
          "Input/mouse.cpp",
-         "Drawer/drawer.cpp"]
+         "Drawer/drawer.cpp",
+         "Grid/grid.cpp"]
 
 def compile_file(filename):
     return "g++ %s -c -Wall &&\n" % filename

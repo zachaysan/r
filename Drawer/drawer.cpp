@@ -15,11 +15,15 @@ void Drawer::update(){
 }
 
 void Drawer::draw_building(int x, int y){
+
+  int x_rounded = (x * 4 / (62 * 4 + 3)) * (62 * 4 + 3 ) / 4 - 2;
+  int y_rounded = (y * 4 / (62 * 4 + 3)) * (62 * 4 + 3 ) / 4 - 12;
+
   SDL_Rect clip;
-  clip.x = (-52 + 31 * 20);
-  clip.y = (-46 + 31 * 10);
-  clip.w = 62;
-  clip.h = 62;
+  clip.x = x_rounded * 1 ;// (-52 + (62 * 20));
+  clip.y = y_rounded * 1 ; //(-46 + (62 * 10));
+  clip.w = 60;
+  clip.h = 60;
   apply_surface(x, y, building_tile, &clip);
 }
 

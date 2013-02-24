@@ -15,6 +15,7 @@
 #include "Input/keyboard.h" // keyboard_input()
 #include "Input/mouse.h" // keyboard_input()
 #include "Drawer/drawer.h" // 
+#include "Grid/grid.h"
 
 // set constants
 const int SCREEN_WIDTH = 1440;
@@ -25,6 +26,7 @@ const int FRAMES_PER_SECOND = 50;
 // set globals
 Timer timer;
 Drawer drawer;
+Grid grid;
 SDL_Event event;
 SDL_Surface* screen = NULL;
 int mouse_x;
@@ -48,6 +50,7 @@ int init(){
   }
   drawer = Drawer(screen);
   drawer.update();
+  grid = Grid(drawer);
   return 0;
 }
 
@@ -62,7 +65,12 @@ int main( int argc, char* args[] ){
   drawer.draw_background();
   bool quit = false;
   int action = NO_ACTION;
+  drawer.draw_background();
+
   while( not quit ){
+    drawer.draw_background();	  
+    grid.hover_building(mouse_x, mouse_y);
+
     while( SDL_PollEvent( &event ) ){
       if( event.type == SDL_QUIT ){
 	quit = true;
@@ -76,9 +84,11 @@ int main( int argc, char* args[] ){
       }
       if( event.type == SDL_MOUSEMOTION ){
 	action = mouse_input( &event.motion, mouse_x, mouse_y );
-	drawer.draw_building(mouse_x, mouse_y);
+
+  
       }
     }
+
     drawer.update();
   }
   log("Program ended successfully");
