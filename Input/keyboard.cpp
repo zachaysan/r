@@ -6,6 +6,7 @@
 #include <sstream>
 
 // contains definitions for ints
+#include "signals.h"
 #include "keyboard.h"
 
 int keyboard_input( SDL_KeyboardEvent *key ){

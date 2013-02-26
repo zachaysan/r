@@ -12,8 +12,11 @@
 
 #include "Logger/logger.h" // log()
 #include "Timer/timer.h" // Timer()
+
+#include "Input/signals.h" // input signals (eg. NO_ACTION)
 #include "Input/keyboard.h" // keyboard_input()
 #include "Input/mouse.h" // keyboard_input()
+
 #include "Drawer/drawer.h" // 
 #include "Grid/grid.h"
 
@@ -83,12 +86,17 @@ int main( int argc, char* args[] ){
 	}
       }
       if( event.type == SDL_MOUSEMOTION ){
-	action = mouse_input( &event.motion, mouse_x, mouse_y );
-
-  
+	action = mouse_motion_input( &event.motion,
+				     mouse_x,
+				     mouse_y );
+      }
+      if( event.type == SDL_MOUSEBUTTONDOWN or
+	  event.type == SDL_MOUSEBUTTONUP ){
+	action = mouse_button_input( &event.button,
+				     mouse_x,
+				     mouse_y );
       }
     }
-
     drawer.update();
   }
   log("Program ended successfully");
