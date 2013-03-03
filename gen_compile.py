@@ -5,6 +5,7 @@ files = ["Logger/logger.cpp",
          "Input/keyboard.cpp",
          "Input/mouse.cpp",
          "Drawer/drawer.cpp",
+         "Units/building.cpp",
          "Grid/grid.cpp"]
 
 def compile_file(filename):

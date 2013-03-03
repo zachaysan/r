@@ -73,6 +73,7 @@ int main( int argc, char* args[] ){
   while( not quit ){
     drawer.draw_background();	  
     grid.hover_building(mouse_x, mouse_y);
+    grid.update();
 
     while( SDL_PollEvent( &event ) ){
       if( event.type == SDL_QUIT ){
@@ -80,10 +81,6 @@ int main( int argc, char* args[] ){
       }
       if( event.type == SDL_KEYDOWN ){ 
 	action = keyboard_input( &event.key );
-	quit = quit or not action;
-	if(action == ACCEPT_ACTION){
-	  drawer.draw_building(300,300);
-	}
       }
       if( event.type == SDL_MOUSEMOTION ){
 	action = mouse_motion_input( &event.motion,
@@ -96,6 +93,19 @@ int main( int argc, char* args[] ){
 				     mouse_x,
 				     mouse_y );
       }
+      
+      // Handle actions (move me somewhere better)
+      if( action == START_ACTION_AT_LOCATION ){
+	grid.lock();
+      }
+      if( action == CANCEL_STARTED_ACTION_AT_LOCATION ){
+	grid.unlock();
+      }
+      if( action == FINISH_STARTED_ACTION_AT_LOCATION ){
+	grid.build_building();
+	grid.unlock();
+      }
+      quit = quit or not action;
     }
     drawer.update();
   }

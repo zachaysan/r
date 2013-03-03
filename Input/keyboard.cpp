@@ -20,6 +20,9 @@ int keyboard_input( SDL_KeyboardEvent *key ){
   if( key->keysym.sym == SDLK_RETURN ){
     return ACCEPT_ACTION;
   }
+  if( key->keysym.sym == SDLK_ESCAPE ){
+    return CANCEL_STARTED_ACTION_AT_LOCATION;
+  }
   if( key->keysym.sym == SDLK_F11 ){
     return MAX_SCREEN;
   }

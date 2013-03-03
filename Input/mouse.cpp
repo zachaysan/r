@@ -20,8 +20,11 @@ int mouse_button_input( SDL_MouseButtonEvent *mouse_button,
 			int &mouse_x,
 			int &mouse_y ){
   bool left_button = SDL_BUTTON_LEFT == mouse_button->button;
+  if( left_button and mouse_button->state == SDL_PRESSED ){
+    return START_ACTION_AT_LOCATION;
+  }
   if( left_button and mouse_button->state == SDL_RELEASED ){
-    return ACTION_AT_LOCATION;
+    return FINISH_STARTED_ACTION_AT_LOCATION;
   }
   return NO_ACTION;
 }
