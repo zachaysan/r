@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Nukeio - The Blasty Fun Game Company</title>
+    <meta name="Description" content="A game creation company in Toronto that builds fun games that almost never crash.">
+  </head>
+  <body>
+    <h1>Nukeio (nuke·ee·oh)</h1>
+    <p>What if there was a game that combined the best from Roller Coaster Tycoon, Sim City, and WoW? A game where the simulation never stops - your creation keeps running. Where a vast city of your creation keeps growing when sleep finally takes you. Growing. Trading.</p>
+    <p>A game that desperately still needs a name. A game that Zach has probably already described to you and that is why you are here.</p>
+    <form action="/email" method="post">
+      Name: 
+      <input type="text" autofocus="autofocus" name="email">
+      <input type="submit" value="Sign Up">
+      {% raw xsrf_form_html() %}
+    </form>
+  </body>
+</html>
